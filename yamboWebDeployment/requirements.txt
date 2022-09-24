@@ -1,4 +1,0 @@
-# Estas son las aplicaciones externas necesarias para que el proyecto corra con normalidad
-# Si instalas una aplicación, apuntala en este documento
-# Para instalar las aplicaciones en tu entorno virtual usa el comando pip install -r requirements.txt (incluye a la ruta lo que sea necesario)
-Django==4.1.1
