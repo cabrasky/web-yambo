@@ -1,0 +1,27 @@
+
+{% extends './../index.html' %}
+{% load static %}
+{% block headers %}
+    <title>Monitores</title>
+    <link rel="stylesheet" href="{% static 'monitores/resources/css/style.css' %}">
+{% endblock %}
+{% block content %}
+    <nav>
+        <a href="/monitores/" {% if sGrupo == null %} class="selected" {% endif %}>Todos</a>        
+        {% for grupo in grupos_list %}
+        <a href="/monitores/{{ grupo.nombre }}/" {% if sGrupo and sGrupo.id == grupo.id %} class="selected" {% endif %}>{{ grupo.nombre }}</a>
+        {% endfor %}
+    </nav>
+    <hr>
+    {% if monitor_list %}
+        {% for moni in monitor_list %}
+            <div class="monitor">
+                <img src="{% static 'monitores/resources/' %}{{ moni.img }}" alt="Foto {{moni.nombre}}">
+                <h1 class="moniNombre">{{moni.nombre}}</h1>
+                <div class="moniDesc">{{moni.description}}</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No hay monitores</p>
+    {% endif %}
+{% endblock %}
