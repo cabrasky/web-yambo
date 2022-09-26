@@ -11,7 +11,7 @@
     <nav>
         <a href="/monitores/" {% if sGrupo == null %} class="selected" {% endif %}>Todos</a>        
         {% for grupo in grupos_list %}
-        <a href="/monitores/{{ grupo.nombre }}/" {% if sGrupo and sGrupo.id == grupo.id %} class="selected" {% endif %}>{{ grupo.nombre }}</a>
+        <a href="/monitores/{{ grupo.nombre }}/" {% if sGrupo and sGrupo.id == grupo.id %} class="selected" {% endif %}>{{ grupo.nombre.title() }}</a>
         {% endfor %}
     </nav>
     <hr>
