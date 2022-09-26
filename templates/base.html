@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}{% endblock %}</title>
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+	<!-- CSS propios -->
+	{% block styles %}{% endblock %}
+</head>
+<body>
+	<!-- barra de navegación -->
+	<nav class="navbar navbar-expand-md bg-light">
+		<div class="container-fluid">
+		  <a class="navbar-brand" href="#">Yambo</a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			  <li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="#">Inicio</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#">Monitores</a>
+			  </li>
+			  <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  Galería
+				</a>
+				<ul class="dropdown-menu">
+					<!-- TODO: Ver si se puede sacar grupo y url de bd -->
+				  <li><a class="dropdown-item" href="#">Peques</a></li>
+				  <li><a class="dropdown-item" href="#">Medianos</a></li>
+				  <li><a class="dropdown-item" href="#">Mayores</a></li>
+				  <li><a class="dropdown-item" href="#">Jambo</a></li>
+				</ul>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#">Contacto</a>
+			  </li>
+			</ul>
+		  </div>
+		</div>
+	  </nav>
+
+	<div class="content">	
+		{% block content %}
+		{% endblock %}
+	</div>
+	<!-- footer -->
+	<footer>
+		Yambo®
+		2022
+	</footer>
+	<!-- Bootstrap JS -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>
