@@ -4,6 +4,7 @@
 {% block title %}Monitores{% endblock %}
 
 {% block styles %}
+    <link rel="stylesheet" href="{% static 'monitores/css/style.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -16,8 +17,8 @@
     <hr>
     <div class="row">
         {% for moni in monitor_list %}
-        <div class="col-md-6">
-            <div class="monitor card" >
+        <div class="col-md-6 col-lg-4">
+            <div class="monitor card" style="margin: 2rem 0px;">
                 <img src="{% static 'media/' %}{{ moni.img }}" alt="Foto {{moni.nombre}}" class="card-img">
                 <div class="card-body">
                     <h3 class="moniNombre card-title text-center">{{moni.nombre}}</h1>
