@@ -1,17 +1,7 @@
-*{
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-    box-sizing:border-box;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-nav {
+.navInternal {
     display: table;
 }
-nav, hr {
+.navInternal + hr {
     margin-left: 5%;
     margin-right: 5%;
 }
@@ -20,7 +10,7 @@ hr{
     padding-bottom: 2px;
     background-color: black;
 }
-nav > a {
+.navInternal > a {
     padding: 16px;
     float: left;
     display: block;
