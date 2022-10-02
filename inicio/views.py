@@ -1,5 +1,9 @@
 from django.shortcuts import render
+from .models import Proyecto
 
 # Create your views here.
 def inicio(req):
-	return render(req, "inicio/inicio.html")
+	proyectos = Proyecto.objects.all
+	return render(req, "inicio/inicio.html", {
+		'proyectos': proyectos
+	})

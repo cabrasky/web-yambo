@@ -2,7 +2,24 @@
 {% load static %}
 
 {% block title %}Inicio{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'inicio/inicio.css' %}">
+{% endblock %}
 
 {% block content %}
     <h2>Proyectos</h2>
+    <div class="row">
+        <!-- componente de carta que se tiene que rellenar con los datos de la bd -->
+        {% for proyecto in proyectos %}
+        <div class="col-lg-6 mb-3">
+            <div class="card">
+                <img src="{% static proyecto.logo %}" class="card-img-top mx-auto" alt="Logo {{proyecto.nombre}}">
+                <div class="card-body">
+                <h5 class="card-title">{{ proyecto.nombre }}</h5>
+                <p class="card-text">{{ proyecto.descripcion }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+      </div>
 {% endblock %}

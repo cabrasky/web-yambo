@@ -1,0 +1,13 @@
+TO DOs
+- Landing (página de inicio) con datos salientes de base de datos [Izhan]
+- Sistema de email para que los padres contacten con nosotros (formulario) [Izhan]
+- Galeria
+	- Subir más de una foto a la vez (interno)
+	- Poner contraseñas a las páginas
+	- Interfaz
+		- Páginas y subpáginas (división)
+		- Forma de ver las fotos
+- Contacto (html)
+- Monitores
+	- Cartas de monis responsive [Javi]
+	- Revisar CSS que interfiere -> bootstrap y se soluciona más tarde
