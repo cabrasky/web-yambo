@@ -8,22 +8,25 @@
 {% endblock %}
 
 {% block content %}
-    <nav>
+    <nav class="navInternal">
         <a href="/monitores/" {% if sGrupo == null %} class="selected" {% endif %}>Todos</a>        
         {% for grupo in grupos_list %}
-        <a href="/monitores/{{ grupo.nombre }}/" {% if sGrupo and sGrupo.id == grupo.id %} class="selected" {% endif %}>{{ grupo.nombre }}</a>
+        <a href="/monitores/{{ grupo.nombre }}/" {% if sGrupo and sGrupo.id == grupo.id %} class="selected" {% endif %}>{{ grupo.nombre|title }}</a>
         {% endfor %}
     </nav>
     <hr>
-    {% if monitor_list %}
+    <div class="row">
         {% for moni in monitor_list %}
-            <div class="monitor">
-                <img src="{% static 'media/' %}{{ moni.img }}" alt="Foto {{moni.nombre}}">
-                <h1 class="moniNombre">{{moni.nombre}}</h1>
-                <div class="moniDesc">{{moni.description}}</div>
+        <div class="col-md-6 col-lg-4">
+            <div class="monitor card" style="margin: 2rem 0px;">
+                <img src="{% static 'media/' %}{{ moni.img }}" alt="Foto {{moni.nombre}}" class="card-img">
+                <div class="card-body">
+                    <h3 class="moniNombre card-title text-center">{{moni.nombre}}</h1>
+                    <h6 class="grupos card-subtitle text-center">{% for grupo in moni.gruposList %}<a href="/monitores/{{ grupo.nombre }}/" style="margin: 0px 20px">{{ grupo.nombre|title }}</a>{% endfor %}</h3>
+                    <p class="moniDesc card-text">{{moni.description}}</p>
+                </div>
             </div>
+        </div>
         {% endfor %}
-    {% else %}
-        <p>No hay monitores</p>
-    {% endif %}
+    </div>
 {% endblock %}
