@@ -4,7 +4,6 @@ from .models import Monitor,Grupo
 from django.template import loader
 
 
-
 def grupo(request, grupo_de_edad):
     grupo = Grupo.objects.get(nombre=grupo_de_edad)
     grupos_list = Grupo.objects.order_by('id')
