@@ -2,12 +2,19 @@ TO DOs
 - Landing (página de inicio) con datos salientes de base de datos [Izhan]
 - Sistema de email para que los padres contacten con nosotros (formulario) [Izhan]
 - Galeria
-	- Subir más de una foto a la vez (interno)
-	- Poner contraseñas a las páginas
-	- Interfaz
+	1- Poner contraseñas a las páginas [Izhan]
+	2- Interfaz [Javi]
 		- Páginas y subpáginas (división)
 		- Forma de ver las fotos
+	3- Subir más de una foto a la vez (interno)
 - Contacto (html)
 - Monitores
 	- Cartas de monis responsive [Javi]
 	- Revisar CSS que interfiere -> bootstrap y se soluciona más tarde
+	
+	
+Late development (hacer cuando la página ya este lista para los padres)
+- Automatizar barra de navegacion
+- Validar formularios
+- Revisar estilos
+- Poner fondo bonito (logos elefantes en blanco y negro)
