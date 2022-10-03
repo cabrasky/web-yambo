@@ -1,4 +1,4 @@
-TO DOs
+TODOs
 - Landing (página de inicio) con datos salientes de base de datos [Izhan]
 - Sistema de email para que los padres contacten con nosotros (formulario) [Izhan]
 - Galeria
