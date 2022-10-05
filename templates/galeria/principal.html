@@ -1,0 +1,43 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}Galeria {{grupo.nombre|title}}{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'monitores/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<nav class="navInternal">
+</nav>
+<hr>
+{% for actividad in actividades %}
+<h1 style="text-align: center;"> {{actividad.dia}} </h1>
+<div id="a{{ actividad.toId }}" class="carousel slide" data-bs-ride="carousel">
+	<div class="carousel-indicators">
+
+		{% for i in actividad.imagenList %}
+		<button type="button" data-bs-target="#a{{ actividad.toId }}" data-bs-slide-to="{{forloop.counter|add:'-1'}}" aria-current="true" aria-label="Slide {{forloop.counter}}" {% if forloop.counter == 1 %} class="active" aria-current="true" {% endif %}></button>
+		{% endfor %}
+
+	</div>
+	<div class="carousel-inner">
+		{% for imagen in actividad.imagenList %}
+		<div class="carousel-item {% if forloop.counter|add:'-1' == 0 %} active {% endif %}" >
+			<img class="d-block w-100" src="{% static 'media/' %}{{ imagen.img }}" alt="{{ imagen.img }}">
+		</div>
+		{% endfor %}
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#a{{actividad.toId}}" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#a{{actividad.toId}}" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+	</button>
+</div>
+{% endfor %}
+{% endblock %}

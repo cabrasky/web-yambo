@@ -24,8 +24,18 @@
 			  <li class="nav-item">
 				<a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">Inicio</a>
 			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="{% url 'monitores' %}">Monitores</a>
+			  <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  Monitores
+				</a>
+				<ul class="dropdown-menu">
+					<!-- TODO: Ver si se puede sacar grupo y url de bd -->
+					<!-- IMPORTANTE: el enlace es a monitores, cambiarlo cuando este la galeria -->
+				  <li><a class="dropdown-item" href="{% url 'grupo_monitores' 'peques' %}">Peques</a></li>
+				  <li><a class="dropdown-item" href="{% url 'grupo_monitores' 'medianos' %}">Medianos</a></li>
+				  <li><a class="dropdown-item" href="{% url 'grupo_monitores' 'mayores' %}">Mayores</a></li>
+				  <li><a class="dropdown-item" href="{% url 'grupo_monitores' 'jambo' %}">Jambo</a></li>
+				</ul>
 			  </li>
 			  <li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,10 +44,10 @@
 				<ul class="dropdown-menu">
 					<!-- TODO: Ver si se puede sacar grupo y url de bd -->
 					<!-- IMPORTANTE: el enlace es a monitores, cambiarlo cuando este la galeria -->
-				  <li><a class="dropdown-item" href="{% url 'grupo_monitores' 'Peques' %}">Peques</a></li>
-				  <li><a class="dropdown-item" href="#">Medianos</a></li>
-				  <li><a class="dropdown-item" href="#">Mayores</a></li>
-				  <li><a class="dropdown-item" href="#">Jambo</a></li>
+				  <li><a class="dropdown-item" href="{% url 'grupo_galeria' 'peques' %}">Peques</a></li>
+				  <li><a class="dropdown-item" href="{% url 'grupo_galeria' 'medianos' %}">Medianos</a></li>
+				  <li><a class="dropdown-item" href="{% url 'grupo_galeria' 'mayores' %}">Mayores</a></li>
+				  <li><a class="dropdown-item" href="{% url 'grupo_galeria' 'jambo' %}">Jambo</a></li>
 				</ul>
 			  </li>
 			  <li class="nav-item">
