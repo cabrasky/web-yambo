@@ -12,16 +12,9 @@
 {% endblock %}
 {% block content %}
 	<h2>Subir fotos de actividades</h2>
-	<form action="" method="post" enctype="multipart/form-data">
+	<form method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
-		<div class="mb-3">
-			<label for="formFileMultiple" class="form-label">Multiple fotos</label>
-			<input class="form-control" type="file" id="formFileMultiple" multiple>
-		  </div>
-		  <div class="form-check form-switch">
-			<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-			<label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-		  </div>
-		<button>Upload</button>
-	</form>
+		{{ form }}
+		<button type="submit">Upload</button>
+	</form>	
 {% endblock %}

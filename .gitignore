@@ -4,5 +4,5 @@ __pycache__
 db.sqlite
 *.pyc
 .gitignore
-
+.vscode
 static/media/galeria
