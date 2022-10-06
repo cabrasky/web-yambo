@@ -1,4 +1,4 @@
-TO DOs
+TODOs
 - Landing (página de inicio) con datos salientes de base de datos [Izhan]
 - Sistema de email para que los padres contacten con nosotros (formulario) [Izhan]
 - Galeria
@@ -11,10 +11,11 @@ TO DOs
 - Monitores
 	- Cartas de monis responsive [Javi]
 	- Revisar CSS que interfiere -> bootstrap y se soluciona más tarde
-	
+
 	
 Late development (hacer cuando la página ya este lista para los padres)
 - Automatizar barra de navegacion
 - Validar formularios
 - Revisar estilos
 - Poner fondo bonito (logos elefantes en blanco y negro)
+>>>>>>> master
