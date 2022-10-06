@@ -12,4 +12,11 @@ class ImageForm(forms.Form):
     Grupos = forms.ModelMultipleChoiceField(
         queryset=grupos_querrySet,
         widget=forms.CheckboxSelectMultiple
-    ) 
+    )
+
+class LoginGaleriaForm(forms.Form):
+    password = forms.CharField(required=True, label="Contraseña", widget=forms.TextInput(attrs={
+		'class' : 'form-control mb-3',
+		'placeholder': 'Contraseña',
+		'type': 'password',
+	}))
