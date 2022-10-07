@@ -14,7 +14,7 @@
 <hr>
 {% for actividad in actividades %}
 <h1 style="text-align: center;"> {{actividad.dia}} </h1>
-<div id="a{{ actividad.toId }}" class="carousel slide" data-bs-ride="carousel">
+<div id="a{{ actividad.toId }}" class="carousel slide w-50" data-bs-ride="carousel" style="margin-bottom: 20px; margin: 0px auto;">
 	<div class="carousel-indicators">
 
 		{% for i in actividad.imagenList %}
