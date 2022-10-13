@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from .models import Imagen, Actividad, Año, Grupo
 from django.template import loader
 import os
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import authenticate, login
 
 @login_required
@@ -26,6 +26,8 @@ def grupo(request, grupo_de_edad):
 	}
 	return HttpResponse(template.render(context, request))
 
+
+@permission_required('galeria.add_actividad')
 def upload(request):
 	if request.method == 'POST':
 		form_p = ImageForm(request.POST)
@@ -54,6 +56,13 @@ def upload(request):
 
 	return render(request, 'galeria/subir_fotos.html', context)
 
+@login_required
+def sendImage(req, error=0):
+	return render(req, "galeria/login.html", {
+		'login_form': login_form,
+		'error': error
+	})
+
 def login_galeria(req, error=0):
 	login_form = LoginGaleriaForm
 	return render(req, "galeria/login.html", {
@@ -63,7 +72,7 @@ def login_galeria(req, error=0):
 
 def iniciar_sesion(req):
 	if req.method == "POST":
-		username = "padres_galeria"
+		username = req.POST['username']
 		password = req.POST['password']
 		
 		user = authenticate(req, username=username, password=password)

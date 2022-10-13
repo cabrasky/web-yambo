@@ -15,6 +15,13 @@ class ImageForm(forms.Form):
     )
 
 class LoginGaleriaForm(forms.Form):
+    username = forms.CharField(required=True, label="Usuario", widget=forms.TextInput(attrs={
+		'class' : 'form-control mb-3',
+		'placeholder': 'Usuario',
+		'type': 'text',
+        'value': "padres_galeria"
+	}))
+
     password = forms.CharField(required=True, label="Contraseña", widget=forms.TextInput(attrs={
 		'class' : 'form-control mb-3',
 		'placeholder': 'Contraseña',
