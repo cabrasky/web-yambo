@@ -85,15 +85,12 @@ def login_galeria_upload(req, error=0):
 
 def iniciar_sesion_upload(req):
 	if req.method == "POST":
-		username = ['username']
+		username = req.POST['username']
 		password = req.POST['password']
 		
 		user = authenticate(req, username=username, password=password)
-		#if user != None:
-		#	login(req, user)
-		#	url = req.POST['next']
-		#	return redirect(url)
-		login(req, user)
-		url = req.POST['next']
-		return redirect(url)
+		if user != None:
+			login(req, user)
+			url = req.POST['next']
+			return redirect(url)
 	return login_galeria_upload(req, 1)
