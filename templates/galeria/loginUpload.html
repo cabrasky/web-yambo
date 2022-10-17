@@ -4,7 +4,7 @@
 
 {% block content %}
 <h2>Acceso a la galería</h2>
-<form method="post" action="{% url 'galeria_login' %}">
+<form method="post" action="{% url 'galeria_login_upload' %}">
 	{% csrf_token %}
 
 	{% if error %}
@@ -14,7 +14,6 @@
 	{% endif %}
 	{{ login_form }}
 	<input type="hidden" name="next" value="{{ request.GET.next }}"/>
-	<button type="submit" class="btn btn-primary">Entrar a la galería</button>
-	Si usas otro usuario, <a href="{% url 'galeria_login_upload' %}?next={{ request.GET.next }}">Aqui</a>
+	<button type="submit" class="btn btn-primary">Iniciar sesión</button>
 </form>
 {% endblock %}

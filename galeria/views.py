@@ -1,7 +1,7 @@
 from builtins import print
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from .forms import ImageForm, LoginGaleriaForm
+from .forms import ImageForm, LoginGaleriaForm, UserLoginGaleriaForm
 from django.shortcuts import redirect
 from .models import Imagen, Actividad, Año, Grupo
 from django.template import loader
@@ -49,20 +49,12 @@ def upload(request):
 			a.save()
 
 		return redirect('/')
+	else:
+		form = ImageForm()
+		context = {'form': form}
+		return render(request, 'galeria/subir_fotos.html', context)
 
-	form = ImageForm()
-
-	context = {'form': form}
-
-	return render(request, 'galeria/subir_fotos.html', context)
-
-@login_required
-def sendImage(req, error=0):
-	return render(req, "galeria/login.html", {
-		'login_form': login_form,
-		'error': error
-	})
-
+# Padres
 def login_galeria(req, error=0):
 	login_form = LoginGaleriaForm
 	return render(req, "galeria/login.html", {
@@ -72,7 +64,7 @@ def login_galeria(req, error=0):
 
 def iniciar_sesion(req):
 	if req.method == "POST":
-		username = req.POST['username']
+		username = "padres_galeria"
 		password = req.POST['password']
 		
 		user = authenticate(req, username=username, password=password)
@@ -81,3 +73,27 @@ def iniciar_sesion(req):
 			url_grupo = req.POST['next']
 			return redirect(url_grupo)
 	return login_galeria(req, 1)
+
+# Subir imagenes
+
+def login_galeria_upload(req, error=0):
+	login_form = UserLoginGaleriaForm
+	return render(req, "galeria/loginUpload.html", {
+		'login_form': login_form,
+		'error': error
+	})
+
+def iniciar_sesion_upload(req):
+	if req.method == "POST":
+		username = ['username']
+		password = req.POST['password']
+		
+		user = authenticate(req, username=username, password=password)
+		#if user != None:
+		#	login(req, user)
+		#	url = req.POST['next']
+		#	return redirect(url)
+		login(req, user)
+		url = req.POST['next']
+		return redirect(url)
+	return login_galeria_upload(req, 1)
