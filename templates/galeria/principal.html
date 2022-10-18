@@ -13,8 +13,8 @@
 </nav>
 <hr>
 {% for actividad in actividades %}
-<h1 style="text-align: center;"> {{actividad.dia}} </h1>
-<div id="a{{ actividad.toId }}" class="carousel slide w-50" data-bs-ride="carousel" style="margin-bottom: 20px; margin: 0px auto;">
+<h1 style="text-align: center; margin-top: 10px;"> {{actividad.dia}} </h1>
+<div id="a{{ actividad.toId }}" class="carousel slide w-50" data-bs-ride="carousel" style="margin: 0px auto 50px auto;">
 	<div class="carousel-indicators">
 
 		{% for i in actividad.imagenList %}
@@ -24,8 +24,8 @@
 	</div>
 	<div class="carousel-inner">
 		{% for imagen in actividad.imagenList %}
-		<div class="carousel-item {% if forloop.counter|add:'-1' == 0 %} active {% endif %}" >
-			<img class="d-block w-100" src="{% static 'media/' %}{{ imagen.img }}" alt="{{ imagen.img }}">
+		<div class="carousel-item {% if forloop.counter|add:'-1' == 0 %} active {% endif %}" style="background-color: grey;">
+			<img class="d-block" style="height: 400px;margin: 0 auto;" src="{% static 'media/' %}{{ imagen.img }}" alt="{{ imagen.img }}">
 		</div>
 		{% endfor %}
 	</div>

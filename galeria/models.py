@@ -4,7 +4,7 @@ from django.db import models
 def setImgUploadToPath(model, path):
     return model.path
 
-class Año(models.Model):
+class Year(models.Model):
     nombre = models.CharField(max_length=30)
 
     def __str__(self):
@@ -12,10 +12,10 @@ class Año(models.Model):
 
 class Grupo(models.Model):
     nombre = models.CharField(max_length=30, null=True)
-    año = models.ForeignKey(Año, on_delete=models.CASCADE, null=True)
+    year = models.ForeignKey(Year, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
-        return self.nombre.title() + " " + self.año.__str__()
+        return self.nombre.title() + " " + self.year.__str__()
 
 
 
