@@ -14,7 +14,7 @@
 <body>
 	<style>
 		body{
-			background-image: url({% static '/static/resources/fondo.jpg' %});
+			background-image: url('/static/static/resources/fondo.jpg');
 			background-repeat: repeat;
 			background-attachment: fixed;
 		}
@@ -65,7 +65,7 @@
 		</div>
 	  </nav>
 
-	<div class="container">	
+	<div class="container" style="background-color: rgba(255, 255, 255, 0.8); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">	
 		{% block content %}
 		{% endblock %}
 	</div>

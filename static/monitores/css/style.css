@@ -7,6 +7,7 @@ hr{
     background-color: black;
     margin: 0.2rem -1rem 0px -1rem;
     border-radius: 2px;
+    border: .5px solid  #535b61;
 }
 .navInternal > a {
     padding: 2px 16px;
@@ -15,10 +16,9 @@ hr{
     font-size: 18px;
     cursor: pointer;
     user-select: none;
-    background-color: lightgreen;
+    background-color:  #6c757d;
     text-decoration: none;
-    border: .5px solid green;
-    color: black;
+    color: white;
 }
 .navInternal :first-child{
     border-top-left-radius: 10px;
@@ -30,6 +30,6 @@ hr{
 }
 
 .navInternal > a:hover,.navInternal > a.selected{
-    background-color: rgb(25, 187, 25);
+    background-color: rgb(83, 190, 83);
     color: white;
 }

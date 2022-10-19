@@ -19,7 +19,7 @@
         {% for moni in monitor_list %}
         <div class="col-md-6 col-lg-4">
             <div class="monitor card" style="margin: 2rem 0px;">
-                <img src="{% static 'media/' %}{{ moni.img }}" alt="Foto {{moni.nombre}}" class="card-img">
+                <img src="{% static 'media/' %}{{ moni.img }}" alt="Foto {{moni.nombre}}" class="card-img" style="object-fit: cover;  object-position: 50% 50%;" width="100%" height="400px">
                 <div class="card-body">
                     <h3 class="moniNombre card-title text-center">{{moni.nombre}}</h1>
                     <h6 class="grupos card-subtitle text-center">{% for grupo in moni.gruposList %}<a href="/monitores/{{ grupo.nombre }}/" style="margin: 0px 20px">{{ grupo.nombre|title }}</a>{% endfor %}</h3>
