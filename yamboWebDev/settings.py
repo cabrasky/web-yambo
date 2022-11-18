@@ -29,7 +29,6 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'yambo.ddns.net',
     'localhost',
-    '*'
 ]
 
 
