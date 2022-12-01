@@ -10,7 +10,7 @@ hr{
     border: .5px solid  #535b61;
 }
 .navInternal > a {
-    padding: 2px 16px;
+    padding: 2px 2.6vw;
     float: left;
     display: block;
     font-size: 18px;
