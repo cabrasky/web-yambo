@@ -6,3 +6,4 @@ db.sqlite
 .gitignore
 .vscode
 static/media/galeria
+db.sqlite3

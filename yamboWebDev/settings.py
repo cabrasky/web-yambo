@@ -29,6 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'yambo.ddns.net',
     'localhost',
+    '127.0.0.1'
 ]
 
 
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     'monitores',
     'galeria',
     'contacto',
+    'documentos'
     # apps externas
 ]
 
