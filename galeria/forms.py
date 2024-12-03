@@ -1,9 +1,9 @@
 from email.policy import default
 from django import forms
-from .models import Imagen, Actividad, Year, Grupo
+from .models import Media, Actividad, Year, Grupo
 
 
-class ImageForm(forms.Form):
+class MediaForm(forms.Form):
     Fecha = forms.DateField(
         input_formats=['%d/%m/%Y'],
         widget=forms.DateInput(attrs={
@@ -12,7 +12,7 @@ class ImageForm(forms.Form):
             'style': "width: 15%"
         })
     )
-    images = forms.ImageField(label="Fotos", widget=forms.ClearableFileInput(attrs={
+    media = forms.FileField(label="Media", widget=forms.ClearableFileInput(attrs={
         'multiple': True,
         'class': 'form-control mb-2',
         'style': "width: 35%"
@@ -23,7 +23,6 @@ class ImageForm(forms.Form):
         label="Grupos",
         queryset=grupos_querrySet,
         widget=forms.CheckboxSelectMultiple()
-
     )
 
 

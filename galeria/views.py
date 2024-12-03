@@ -1,9 +1,9 @@
 from builtins import print
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from .forms import ImageForm, LoginGaleriaForm, UserLoginGaleriaForm
+from .forms import MediaForm, LoginGaleriaForm, UserLoginGaleriaForm
 from django.shortcuts import redirect
-from .models import Imagen, Actividad, Year, Grupo
+from .models import Media, Actividad, Year, Grupo
 from django.template import loader
 import os
 from django.contrib.auth.decorators import login_required, permission_required
@@ -15,8 +15,8 @@ def grupo(request, grupo_de_edad):
 	grupo = grupos[0]
 	actividades = Actividad.objects.filter(grupo=grupo).order_by('-dia')
 	for i in range(len(actividades)):
-		actividades[i].imagenList = []
-		actividades[i].imagenList = actividades[i].imagen_set.all()
+		actividades[i].mediaList = []
+		actividades[i].mediaList = actividades[i].media_set.all()
 	
 
 	template = loader.get_template('galeria/principal.html')
@@ -29,43 +29,76 @@ def grupo(request, grupo_de_edad):
 
 @permission_required('galeria.add_actividad')
 def upload(request):
-	if request.method == 'POST':
-		form_p = ImageForm(request.POST)
-		grupos = form_p.data.getlist("Grupos")
-		print(grupos)
-		for grupo in grupos:
-			grupoN = Grupo.objects.get(id=grupo)
-			if Actividad.objects.filter(dia=form_p.data.get("Fecha"), grupo=grupoN).exists():
-				a = Actividad.objects.get(dia=form_p.data.get("Fecha"), grupo=grupoN)
-				intI = Imagen.objects.filter(actividad=a).__len__()
-				for img in request.FILES.getlist('images'):
-					path = os.path.join("galeria" ,Year.objects.last().__str__(), grupoN.nombre, form_p.data.get("Fecha"), intI.__str__ () + os.path.splitext(img.name)[1])
-					i = Imagen.objects.create(path=path)
-					i.img = img
-					i.actividad = a
-					i.save()
-					intI += 1
-				a.grupo = grupoN
-				a.save()
-			else:
-				a = Actividad.objects.create(dia=form_p.data.get("Fecha"))
-				intI = 0
-				for img in request.FILES.getlist('images'):
-					path = os.path.join("galeria" ,Year.objects.last().__str__(), grupoN.nombre, form_p.data.get("Fecha"), intI.__str__ () + os.path.splitext(img.name)[1])
-					i = Imagen.objects.create(path=path)
-					i.img = img
-					i.actividad = a
-					i.save()
-					intI += 1
-				a.grupo = grupoN
-				a.save()
+    if request.method == 'POST':
+        form_p = MediaForm(request.POST, request.FILES)
+        grupos = form_p.data.getlist("Grupos")
+        print(grupos)
+        
+        for grupo in grupos:
+            grupoN = Grupo.objects.get(id=grupo)
+            
+            if Actividad.objects.filter(dia=form_p.data.get("Fecha"), grupo=grupoN).exists():
+                a = Actividad.objects.get(dia=form_p.data.get("Fecha"), grupo=grupoN)
+                intI = Media.objects.filter(actividad=a).__len__()
+                
+                for file in request.FILES.getlist('media'):
+                    path = os.path.join(
+                        "galeria", Year.objects.last().__str__(), grupoN.nombre, form_p.data.get("Fecha"),
+                        f"{intI}{os.path.splitext(file.name)[1]}"
+                    )
+                    
+                    try:
+                        validate_file_extension(file)
+                        i = Media.objects.create(path=path, is_video=is_file_video(file))
+                        i.media = file
+                        i.actividad = a
+                        i.save()
+                        intI += 1
+                    except ValidationError as e:
+                        print(e)
+            else:
+                a = Actividad.objects.create(dia=form_p.data.get("Fecha"))
+                intI = 0
+                
+                for file in request.FILES.getlist('media'):
+                    path = os.path.join(
+                        "galeria", Year.objects.last().__str__(), grupoN.nombre, form_p.data.get("Fecha"),
+                        f"{intI}{os.path.splitext(file.name)[1]}"
+                    )
+                    
+                    try:
+                        validate_file_extension(file)
+                        i = Media.objects.create(path=path, is_video=is_file_video(file))
+                        i.media = file
+                        i.actividad = a
+                        i.save()
+                        intI += 1
+                    except ValidationError as e:
+                        print(e)
+                
+                a.grupo = grupoN
+                a.save()
 
-		return redirect('/')
-	else:
-		form = ImageForm()
-		context = {'form': form}
-		return render(request, 'galeria/subir_fotos.html', context)
+        return redirect('/')
+    else:
+        form = MediaForm()
+        context = {'form': form}
+        return render(request, 'galeria/subir_fotos.html', context)
 
+
+def validate_file_extension(file):
+    valid_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.mp4', '.avi', '.mov']
+    ext = os.path.splitext(file.name)[1]
+    
+    if ext.lower() not in valid_extensions:
+        raise ValidationError('Unsupported file extension.')
+
+
+def is_file_video(file):
+    video_extensions = ['.mp4', '.avi', '.mov']
+    ext = os.path.splitext(file.name)[1]
+    
+    return ext.lower() in video_extensions
 # Padres
 def login_galeria(req, error=0):
 	login_form = LoginGaleriaForm

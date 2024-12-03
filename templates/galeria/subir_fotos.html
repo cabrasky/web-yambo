@@ -1,7 +1,7 @@
 {% extends '../base.html' %}
 {% load static %}
 
-{% block title %}Subir fotos{% endblock %}
+{% block title %}Subir media{% endblock %}
 {% block styles %}
 <style>
 	img {
@@ -15,6 +15,6 @@
 	<form method="POST" enctype="multipart/form-data">
 		{% csrf_token %}
 		{{ form }}
-		<button type="submit" class="btn btn-primary">Subir Imagenes</button>
+		<button type="submit" class="btn btn-primary">Subir Media</button>
 	</form>	
 {% endblock %}

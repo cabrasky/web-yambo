@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='imagen',
             name='img',
-            field=models.ImageField(max_length=200, null=True, upload_to=galeria.models.setImgUploadToPath),
+            field=models.ImageField(max_length=200, null=True, upload_to=galeria.models.setMediaUploadToPath),
         ),
     ]

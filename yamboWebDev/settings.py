@@ -26,6 +26,11 @@ SECRET_KEY = 'django-insecure-jg5o^x&el&&m3gv@x66nmpqz_w+fmr$ekjy1r4q^gw$x$g(vp_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://yambo.ddns.net',
+    'https://yambo.ddns.net',
+]
+
 ALLOWED_HOSTS = [
     'yambo.ddns.net',
     'localhost',
@@ -91,9 +96,14 @@ WSGI_APPLICATION = 'yamboWebDev.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+    \
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE'  : 'django.db.backends.mysql', # <-- UPDATED line 
+        'NAME'    : 'yambo_deploy',                 # <-- UPDATED line 
+        'USER'    : 'yambo',                     # <-- UPDATED line
+        'PASSWORD': '8^eQRP2GU5Sh3W',              # <-- UPDATED line
+        'HOST'    : '192.168.1.21',                # <-- UPDATED line
+        'PORT'    : '3306',
     }
 }
 

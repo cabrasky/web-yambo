@@ -1,7 +1,7 @@
 from distutils.command.upload import upload
 from django.db import models
 
-def setImgUploadToPath(model, path):
+def setMediaUploadToPath(model, path):
     return model.path
 
 class Year(models.Model):
@@ -29,10 +29,10 @@ class Actividad(models.Model):
     def toId(self):
         return self.dia.replace("-", "_")
 
-class Imagen(models.Model):
+class Media(models.Model):
     path = models.CharField(max_length=200, null=True)
-    img = models.ImageField(upload_to = setImgUploadToPath, null=True, max_length=200)
+    media = models.ImageField(upload_to = setMediaUploadToPath, null=True, max_length=200)
     actividad = models.ForeignKey(Actividad, on_delete=models.CASCADE, null=True)
-
+    is_video = models.BooleanField(default=False)
     def __str__(self):
-        return self.img.name + " " + self.actividad.__str__()
+        return self.media.name + " " + self.actividad. __str__()
