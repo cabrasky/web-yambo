@@ -9,3 +9,4 @@ static/media/galeria
 db.sqlite3
 static/media/
 migrations
+.env

@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -99,11 +99,11 @@ DATABASES = {
     \
     'default': {
         'ENGINE'  : 'django.db.backends.mysql', # <-- UPDATED line 
-        'NAME'    : 'yambo_deploy',                 # <-- UPDATED line 
-        'USER'    : 'yambo',                     # <-- UPDATED line
-        'PASSWORD': '8^eQRP2GU5Sh3W',              # <-- UPDATED line
-        'HOST'    : '192.168.1.21',                # <-- UPDATED line
-        'PORT'    : '3306',
+        'NAME'    : config('DB_NAME'),                 # <-- UPDATED line 
+        'USER'    : config('DB_USERNAME'),                     # <-- UPDATED line
+        'PASSWORD': config('DB_PASSWORD'),              # <-- UPDATED line
+        'HOST'    : config('DB_HOST'),                # <-- UPDATED line
+        'PORT'    : config('DB_PORT'),
     }
 }
 
@@ -159,10 +159,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, STATIC_URL ,'media/')
 MEDIA_URL = 'media/'
 
 # EMAIL_SETTINGS
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = "webyambo@gmail.com"
-EMAIL_HOST_PASSWORD = 'cnqtepzrscbvdsfu'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_YAMBO = "yamboalcobendas@gmail.com"
+EMAIL_RECIPIENT = config('EMAIL_RECIPIENT')

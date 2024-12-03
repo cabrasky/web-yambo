@@ -25,7 +25,7 @@ def mandar_email(req):
 			'contenido': contenido,
 		})
 
-		email = EmailMessage(asunto, template, None, [settings.EMAIL_YAMBO])
+		email = EmailMessage(asunto, template, None, [settings.EMAIL_RECIPIENT])
 		email.fail_silently = False
 		email.send()
 
