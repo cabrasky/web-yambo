@@ -53,9 +53,7 @@ INSTALLED_APPS = [
     # apps del proyecto
     'inicio',
     'monitores',
-    'galeria',
-    'contacto',
-    'documentos'
+    'contacto'
     # apps externas
 ]
 
