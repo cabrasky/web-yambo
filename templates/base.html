@@ -16,7 +16,7 @@
 	<!-- CSS propios -->
 	{% block styles %}{% endblock %}
 </head>
-<body>
+<body class="d-flex flex-column vh-100">
 	<style>
 		body{
 			background-image: url('/static/static/resources/fondo.jpg');
@@ -57,10 +57,32 @@
 		</div>
 	  </nav>
 
-	<div class="container" style="background-color: rgba(255, 255, 255, 0.8); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">	
+	<div class="flex-grow-1 container my-5" style="background-color: rgba(255, 255, 255, 0.8); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">	
 		{% block content %}
 		{% endblock %}
 	</div>
+	<footer class="footer d-flex flex-wrap justify-content-between align-items-center py-3 px-5 border-top bg-light">
+		<div class="col-md-4 d-flex align-items-center">
+			<a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+				<img src="{% static 'resources/yambo-logo_Full_Gray.svg' %}" alt="Yambo Logo" height="32" />
+			</a>
+			<span class="text-muted">
+				© 2024 Yambo Alcobendas
+			</span>
+		</div>
+		<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+			<li class="ms-3">
+				<a class="text-muted" href="https://github.com/cabrasky/web-yambo-dev/" target="_blank" rel="noopener noreferrer">
+					<img src="{% static 'resources/github-logo_Full_Gray.svg' %}" class="bi" width="24" height="24" alt="GitHub Logo" />
+				</a>
+			</li>
+			<li class="ms-3">
+				<a class="text-muted" href="https://www.instagram.com/yambo_jambo/" target="_blank" rel="noopener noreferrer">
+					<img src="{% static 'resources/instagram-logo_Full_Gray.svg' %}" class="bi" width="24" height="24" alt="Instagram Logo" />
+				</a>
+			</li>
+		</ul>
+	</footer>	
 	<!-- Bootstrap JS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
