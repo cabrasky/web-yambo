@@ -39,8 +39,8 @@ Aquí te mostramos algunas capturas de pantalla de nuestra página web:
 
 ### **Características**
 
-- **Página de inicio:** Información general sobre la asociación y su misión.  
-- **Página de proyectos:** Descripción de los diferentes proyectos que llevamos a cabo.  
+- **Página de inicio:** Información general sobre la asociación y sus proyectos.  
+- **Página de monitores:** Descripción de los diferentes voluntarios que participan en la asociación.  
 - **Página de contacto:** Formulario para contactar con la asociación.  
 
 ---
