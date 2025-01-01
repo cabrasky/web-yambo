@@ -101,10 +101,10 @@ Sigue estos pasos para configurar y ejecutar la página web en tu entorno local:
 
 ```bash
 # 1. Clona el repositorio
-git clone https://github.com/cabrasky/web-yambo-dev.git
+git clone https://github.com/cabrasky/web-yambo.git
 
 # 2. Accede al directorio del proyecto
-cd web-yambo-dev
+cd web-yambo
 
 # 3. (Opcional) Crea y activa un entorno virtual
 python -m venv venv
